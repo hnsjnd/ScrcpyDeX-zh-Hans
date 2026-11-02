@@ -1,0 +1,57 @@
+diff --git a/config/settings.json b/config/settings.json
+index d0dc695..7a700d3 100644
+--- a/config/settings.json
++++ b/config/settings.json
+@@ -23,5 +23,6 @@
+   "ui": {
+     "theme": "dark",
+     "showLogPanel": true
+-  }
++  },
++  "language": "zh-Hans"
+ }
+diff --git a/src/ScrcpyDex.App/ViewModels/MainWindowViewModel.cs b/src/ScrcpyDex.App/ViewModels/MainWindowViewModel.cs
+index 4ce07f1..428f3f8 100644
+--- a/src/ScrcpyDex.App/ViewModels/MainWindowViewModel.cs
++++ b/src/ScrcpyDex.App/ViewModels/MainWindowViewModel.cs
+@@ -111,10 +111,10 @@ namespace ScrcpyDex.App.ViewModels
+         #region Observable Properties - Localization
+ 
+         [ObservableProperty]
+-        private string _currentLanguage = "en";
++        private string _currentLanguage = "zh-Hans";
+ 
+         [ObservableProperty]
+-        private string _currentLanguageCode = "EN";
++        private string _currentLanguageCode = "ZH";
+ 
+         #endregion
+ 
+diff --git a/src/ScrcpyDex.Core/Configuration/ScrcpyDeXSettings.cs b/src/ScrcpyDex.Core/Configuration/ScrcpyDeXSettings.cs
+index 2f5f522..f4d8cfc 100644
+--- a/src/ScrcpyDex.Core/Configuration/ScrcpyDeXSettings.cs
++++ b/src/ScrcpyDex.Core/Configuration/ScrcpyDeXSettings.cs
+@@ -22,7 +22,7 @@ namespace ScrcpyDex.Core.Configuration
+         [JsonPropertyName("version")]
+         public string Version { get; set; } = "1.1";
+ 
+-        private string _language = "en";
++        private string _language = "zh-Hans";
+ 
+         [JsonPropertyName("language")]
+         public string Language
+diff --git a/src/ScrcpyDex.Core/Localization/LocalizationManager.cs b/src/ScrcpyDex.Core/Localization/LocalizationManager.cs
+index f145016..952520c 100644
+--- a/src/ScrcpyDex.Core/Localization/LocalizationManager.cs
++++ b/src/ScrcpyDex.Core/Localization/LocalizationManager.cs
+@@ -91,8 +91,8 @@ namespace ScrcpyDex.Core.Localization
+                 CultureInfo.GetCultureInfo("zh-Hans")
+             }.AsReadOnly();
+ 
+-            // Default to English
+-            _currentCulture = CultureInfo.GetCultureInfo("en");
++            // Custom zh build: default to Simplified Chinese
++            _currentCulture = CultureInfo.GetCultureInfo("zh-Hans");
+         }
+ 
+         /// <inheritdoc />
